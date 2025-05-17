@@ -26,5 +26,25 @@ voidloop() {
 if (smokeSensor<normalThreshold) {
 lcd.setCursor(0,1);
 lcd.print("Normal");
+digitalWrite(buzzer.LOW);
+digitalWrite(lcd.LOW);
+digitalWrite(relay.LOW);
+}
+else if (smokeSensor<mediumThresshold) {
+lcd.setCursor(0,1);
+lcd.print("mediam");
+digitalWrite(buzzer.HIGH);
+digitalWrite(lcd.LOW);
+digitalWrite(relay.LOW);
+}
+
+else if (smokeSensor>mediumThresshold) {
+lcd.setCursor(0,1);
+lcd.print("HIGH");
+digitalWrite(buzzer.HIGH);
+digitalWrite(lcd.HIGH);
+digitalWrite(relay.HIGH);
+}
+
 
 }
