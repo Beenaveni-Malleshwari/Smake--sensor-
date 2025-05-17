@@ -1,1 +1,30 @@
+#include<wire.h>
+#include<LiquidCrystal_12C.h>
+const int smokeSensor=Ao;
+const int relay =6;
+const int buzzer=7;
+const int led=8;
+const int normalThreshold=200;
+const int mediumThresshold=400;
+LiquidCrystal-12C lcd(0x27, 16,2):
+voidsetup() {
+pinMode(smokeSensor,INPUT);
+pinMode(buzzer,OUTPUT);
+pinMode(led,OUTPUT);
+pinMode(relay,OUTPUT);
 
+// serial monitor//
+Serial.begin(9600);
+lcd.begin();
+lcd.init();
+lcd.backLight();
+lcd.setCursor(0,0);
+lcd.print("smoke detector");
+lcdclear();
+}
+voidloop() {
+if (smokeSensor<normalThreshold) {
+lcd.setCursor(0,1);
+lcd.print("Normal");
+
+}
